@@ -1,8 +1,4 @@
-import React, {
-  forwardRef,
-  ElementType,
-  ComponentPropsWithoutRef,
-} from 'react';
+import React, { ElementType, ComponentPropsWithoutRef } from 'react';
 import { cn } from '@/lib/utils';
 
 // Valid HTML elements for typography

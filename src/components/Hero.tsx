@@ -3,6 +3,7 @@
 import { Button } from '@/components/ui';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
+import { Sparkles } from 'lucide-react';
 
 type SocialProofProps = {
   rating?: number;
@@ -19,9 +20,13 @@ type HeroProps = {
   ctaText?: string;
   ctaHref?: string;
   onCtaClick?: () => void;
-  ctaDiscount?: string;
+  ctaSubtitle?: string;
   image?: string;
   imageAlt?: string;
+  imageBadge?: {
+    text?: string;
+    icon?: React.ReactNode;
+  };
   socialProof?: SocialProofProps;
   badge?: {
     text?: string;
@@ -30,7 +35,7 @@ type HeroProps = {
   className?: string;
 };
 
-export const Hero = ({
+const HeroComponent = ({
   title = '',
   subtitle,
   highlight,
@@ -38,9 +43,10 @@ export const Hero = ({
   ctaText = '',
   ctaHref = '',
   onCtaClick,
-  ctaDiscount,
+  ctaSubtitle,
   image,
   imageAlt = 'Hero image',
+  imageBadge,
   socialProof,
   badge,
   className,
@@ -67,11 +73,11 @@ export const Hero = ({
   return (
     <section
       className={cn(
-        'container flex flex-col lg:flex-row items-center w-full justify-start gap-16 lg:gap-20 lg:items-start py-8 pb-20 lg:pb-24',
+        'container flex flex-col lg:flex-row items-center w-full justify-start py-8 pb-20 lg:pb-24',
         className,
       )}
     >
-      <div className="flex flex-col gap-12 items-center justify-center text-center lg:text-left lg:items-start">
+      <div className="flex flex-col gap-8 items-center justify-center text-center lg:text-left lg:items-start lg:flex-1">
         {badge && (
           <a
             href={badge.href}
@@ -85,7 +91,7 @@ export const Hero = ({
           </a>
         )}
 
-        <h1 className="font-extrabold text-4xl lg:text-6xl tracking-tight md:-mb-4 flex flex-col gap-3 items-center lg:items-start">
+        <h1 className="font-extrabold text-4xl lg:text-6xl tracking-tight md:-mb-4 flex flex-col gap-3 items-start">
           <span className="relative">{title}</span>
           {subtitle && (
             <span className="whitespace-nowrap relative">
@@ -112,7 +118,12 @@ export const Hero = ({
             onClick={handleCtaClick}
           >
             {ctaHref !== '#' ? (
-              <a href={ctaHref} className="flex items-center gap-2">
+              <a
+                rel="noopener noreferrer"
+                target="_blank"
+                href={ctaHref}
+                className="flex items-center gap-2"
+              >
                 {ctaText}
               </a>
             ) : (
@@ -120,7 +131,7 @@ export const Hero = ({
             )}
           </Button>
 
-          {ctaDiscount && (
+          {ctaSubtitle && (
             <p className="text-sm md:text-base flex justify-center items-center gap-2">
               <svg
                 className="w-4 h-4 text-success"
@@ -133,7 +144,7 @@ export const Hero = ({
                   clipRule="evenodd"
                 />
               </svg>
-              <span dangerouslySetInnerHTML={{ __html: ctaDiscount }} />
+              <span dangerouslySetInnerHTML={{ __html: ctaSubtitle }} />
             </p>
           )}
         </div>
@@ -176,14 +187,69 @@ export const Hero = ({
       </div>
 
       {image && (
-        <div className="relative max-md:-m-4 lg:w-full">
-          <img
-            alt={imageAlt}
-            className="w-full max-w-xl ml-auto rounded-lg shadow-lg"
-            src={image}
-          />
+        <div className="relative lg:flex-1 hidden lg:flex justify-start w-full lg:w-auto">
+          <div className="relative w-full">
+            <div className="absolute -left-2 -top-2 h-32 w-32 rounded-full bg-primary/10 blur-2xl animate-pulse"></div>
+            <div className="absolute -bottom-4 -right-4 h-40 w-40 rounded-full bg-secondary/10 blur-2xl animate-pulse delay-1000"></div>
+
+            <div className="relative rounded-2xl border border-base-200 bg-base-100 p-3 shadow-xl animate-float hover:scale-105 hover:shadow-2xl transition-all duration-300 ease-out animate-fade-in-up">
+              <Image
+                alt={imageAlt}
+                width={800}
+                height={600}
+                src={image}
+                className="rounded-lg shadow-md object-cover w-full h-auto"
+                priority
+              />
+
+              {imageBadge && (
+                <div className="absolute -bottom-4 -left-4 flex items-center space-x-3 rounded-full bg-base-100 p-4 shadow-lg border border-base-200">
+                  {imageBadge.icon && (
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-content">
+                      {imageBadge.icon}
+                    </div>
+                  )}
+                  {imageBadge.text && (
+                    <div>
+                      <p className="font-medium text-base-content text-sm">
+                        {imageBadge.text}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       )}
     </section>
   );
 };
+
+const Hero = () => {
+  return (
+    <div className="max-w-7xl mx-auto">
+      <HeroComponent
+        title="Build your idea"
+        subtitle="in days,"
+        highlight="not months"
+        description="A minimalist, production-ready Next.js boilerplate with code-built-in AI capabilities. Skip the setup and anoying stufs and focus on what matters most! Building your product."
+        ctaText="Get This Template"
+        ctaSubtitle="AI-Powered Next.js Boilerplate"
+        ctaHref="https://github.com/shpsyte/boilerplate"
+        badge={{
+          href: 'https://github.com/shpsyte/boilerplate',
+          text: '⭐ Star us on GitHub',
+        }}
+        image="/hero-img.avif"
+        imageAlt="Mongo + Mailgun + Stripe + NextJS + Tailwind + NextAuth = ShipFast"
+        imageBadge={{
+          icon: <Sparkles size={20} className="text-white" />,
+          text: 'Code-Template for Claude AI',
+        }}
+      />
+    </div>
+  );
+};
+
+export { Hero, HeroComponent };

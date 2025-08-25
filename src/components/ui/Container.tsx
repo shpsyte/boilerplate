@@ -1,21 +1,28 @@
 import React, { forwardRef, HTMLAttributes } from 'react';
 import { cn } from '@/lib/utils';
 
-interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
+interface ContainerProps extends HTMLAttributes<HTMLElement> {
   children: React.ReactNode;
   fullWidth?: boolean;
 }
 
-export const Container = forwardRef<HTMLDivElement, ContainerProps>(
+export const Container = forwardRef<HTMLElement, ContainerProps>(
   ({ children, className, fullWidth, ...props }, ref) => {
     return (
-      <div
+      <section
         ref={ref}
-        className={cn(fullWidth ? 'w-full' : 'container ', 'px-4', className)}
+        className={cn(
+          'px-4 py-12 mx-auto',
+          {
+            'w-full': fullWidth,
+            container: !fullWidth,
+          },
+          className,
+        )}
         {...props}
       >
         {children}
-      </div>
+      </section>
     );
   },
 );
