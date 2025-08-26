@@ -4,6 +4,7 @@ import { Button } from '@/components/ui';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import { Sparkles } from 'lucide-react';
+import { appConfig } from '@/config/app.config';
 
 type SocialProofProps = {
   rating?: number;
@@ -235,7 +236,7 @@ const Hero = ({ className }: { className?: string } = {}) => {
         description="A minimalist, production-ready Next.js boilerplate with code-built-in AI capabilities. Skip the setup and anoying stufs and focus on what matters most! Building your product."
         ctaText="Start building!"
         ctaSubtitle="AI-Powered Next.js Boilerplate"
-        ctaHref="https://github.com/shpsyte/boilerplate"
+        ctaHref={appConfig.metadata.ctaMainAction}
         badge={{
           href: 'https://github.com/shpsyte/boilerplate',
           text: '⭐ Star us on GitHub',

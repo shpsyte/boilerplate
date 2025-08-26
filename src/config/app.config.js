@@ -22,7 +22,7 @@ export const appConfig = {
     version: '1.0.0',
     author: 'LuizB!',
     ctaMainAction:
-      'https://vercel.com/new/clone?repository-url=https://github.com/shpsyte/boilerplate&project-name=nextjs-boilerplate&repository-name=nextjs-boilerplate&demo-title=Next.js+AI+Boilerplate&demo-description=A modern React boilerplate supercharged with AI-powered features, designed for rapid development, scalability, and seamless user experience.&demo-url=https://boilerplate.vercel.app&demo-image=https://raw.githubusercontent.com/shpsyte/boilerplate/main/preview.png',
+      'https://vercel.com/new/clone?repository-url=https://github.com/shpsyte/boilerplate&project-name=nextjs-boilerplate&repository-name=nextjs-boilerplate&demo-title=Next.js+AI+Boilerplate&demo-description=A modern React boilerplate supercharged with AI-powered features, designed for rapid development, scalability, and seamless user experience.&demo-url=https://buildfast.dev&demo-image=https://raw.githubusercontent.com/shpsyte/boilerplate/refs/heads/main/public/hero-img.avif',
   },
 
   // Theme configuration with DaisyUI themes
