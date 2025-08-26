@@ -3,10 +3,9 @@ import { Header } from '@/components/Header';
 import { Hero } from '@/components/Hero';
 import { Features } from '@/components/Features';
 import { Pricing } from '@/components/Pricing';
-import { CTA } from '@/components/CTA';
+import { Cta } from '@/components/CTA';
 import { Suspense } from 'react';
-import Testimonial from '@/components/Testimonial';
-import { Container } from '@/components/ui';
+import { Testimonial } from '@/components/Testimonial';
 
 export default function Home() {
   return (
@@ -18,34 +17,8 @@ export default function Home() {
         <Hero />
         <Features />
         <Pricing />
-        <Container>
-          <CTA
-            title="Ready to Get Started?"
-            description="Join thousands of developers who trust our boilerplate to build amazing applications faster than ever."
-            primaryButton={{
-              text: 'Start Building Now',
-              onClick: () => console.log('Start building clicked'),
-            }}
-            secondaryButton={{
-              text: 'View Documentation',
-              onClick: () => console.log('View docs clicked'),
-            }}
-          />
-        </Container>
-        <Container fullWidth className="bg-base-200">
-          <Testimonial
-            quote="Great testimonial here"
-            authorName="John Doe"
-            authorRole="CEO"
-            className="my-custom-spacing"
-          />
-        </Container>
-        <Testimonial
-          quote="Great testimonial here"
-          authorName="John Doe"
-          authorRole="CEO"
-          className="my-custom-spacing"
-        />
+        <Cta />
+        <Testimonial />
         {/* <Testimonial
           quote="This product changed everything for our team."
           authorName="Jane Doe"

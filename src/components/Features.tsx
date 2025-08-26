@@ -66,13 +66,13 @@ const FeatureCard = ({ icon, title, description }: FeatureProps) => {
 
 export const Features = ({ className }: FeaturesProps) => {
   return (
-    <section className={cn('w-full bg-base-200 py-12 md:py-24', className)}>
-      <div className="max-w-7xl mx-auto">
-        <div className="mx-auto max-w-2xl text-center mb-16">
+    <div className="container mx-auto mb-12">
+      <div className={cn('space-y-16', className)}>
+        <div className="text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
             Everything you need, nothing you don&apos;t
           </h2>
-          <p className="text-lg text-base-content/80">
+          <p className="text-lg text-base-content/80 max-w-2xl mx-auto">
             A minimalist approach with maximum flexibility. Only the essential
             features to get you started fast.
           </p>
@@ -89,6 +89,6 @@ export const Features = ({ className }: FeaturesProps) => {
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 };

@@ -85,7 +85,7 @@ src/components/ui/
 
 ### Standard Component Template
 
-Here's the standard template for creating new components:
+Here's the standard template following the dual export pattern:
 
 ```tsx
 import { cn } from '@/lib/utils';
@@ -101,7 +101,8 @@ type FeatureCardProps = {
   className?: string;
 };
 
-export function FeatureCard({
+// Pure component - reusable core functionality
+function FeatureCardCore({
   title,
   description,
   icon,
@@ -150,6 +151,21 @@ export function FeatureCard({
     </div>
   );
 }
+
+// Wrapper with default layout
+const FeatureCard = () => {
+  return (
+    <div className="p-4">
+      <FeatureCardCore
+        title="Default Feature"
+        description="Default feature description"
+      />
+    </div>
+  );
+};
+
+// Export both for flexibility
+export { FeatureCardCore, FeatureCard };
 ```
 
 ## Component Development Guidelines
@@ -226,47 +242,75 @@ Use the `cn()` utility for dynamic classes:
 >
 ```
 
-### 5. Component Reusability - No Fixed Layouts
+### 5. Component Architecture - Pure Component + Layout Wrapper Pattern
 
-Components should NOT contain fixed layout rules (padding, margins, positioning) to maintain reusability. Use the `Container` component from UI library for layouts:
+Use the dual export pattern: export both a pure component and a wrapper with default layout. This provides maximum flexibility while maintaining good defaults.
 
 ```tsx
-// ❌ Don't do this - component has fixed layout
-export function MyComponent() {
+// ✅ Pure component - no layout constraints
+function MyComponentCore({
+  title,
+  description,
+  className,
+}: {
+  title: string;
+  description: string;
+  className?: string;
+}) {
   return (
-    <section className="py-16 px-4 container mx-auto">
-      <div className="max-w-4xl mx-auto">
-        {/* component content */}
-      </div>
-    </section>
-  );
-}
-
-// ✅ Do this - let the page control layout
-export function MyComponent({ className }: { className?: string }) {
-  return (
-    <div className={cn('flex flex-col items-center gap-6', className)}>
-      {/* component content */}
+    <div className={cn('text-center space-y-6', className)}>
+      <Typography
+        as="h2"
+        className="text-4xl md:text-6xl font-bold text-base-content"
+      >
+        {title}
+      </Typography>
+      <Typography
+        as="p"
+        className="text-lg md:text-xl text-base-content/70 max-w-2xl mx-auto"
+      >
+        {description}
+      </Typography>
     </div>
   );
 }
 
-// Layout responsibility goes to the page/parent using Container:
-import { Container } from '@/components/ui';
+// ✅ Wrapper with default layout - ready to use
+const MyComponent = ({ className }: { className: string }) => {
+  return (
+    <div className={cn('container mx-auto py-12', className)}>
+      <MyComponentCore
+        title="Default Title"
+        description="Default description with standard layout"
+      />
+    </div>
+  );
+};
 
-// Default responsive container with spacing and background
-<Container className="py-16 bg-base-200 max-w-4xl mx-auto">
-  <MyComponent />
-</Container>
+// Export both for flexibility
+export { MyComponentCore, MyComponent };
+```
 
-// Full width with custom max-width and styling
-<Container fullWidth className="py-16 bg-base-200 max-w-6xl mx-auto">
-  <MyComponent />
-</Container>
+**Usage Examples:**
 
-// Simple responsive layout
-<Container className="py-16">
-  <MyComponent />
+```tsx
+// Use the wrapper for standard layouts
+<MyComponent />
+
+// Use the pure component for custom layouts
+<section className="py-20 bg-base-200">
+  <div className="max-w-6xl mx-auto">
+    <MyComponentCore
+      title="Custom Title"
+      description="Custom layout with more control"
+      className="text-left"
+    />
+  </div>
+</section>
+
+// Use with Container component for different layouts
+<Container className="py-16 bg-gradient-to-r from-primary to-secondary">
+  <MyComponentCore title="Gradient Background" description="Using Container wrapper" />
 </Container>
 ```
 

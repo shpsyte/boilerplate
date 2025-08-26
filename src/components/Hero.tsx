@@ -71,9 +71,9 @@ const HeroComponent = ({
   };
 
   return (
-    <section
+    <div
       className={cn(
-        'container flex flex-col lg:flex-row items-center w-full justify-start py-8 pb-20 lg:pb-24',
+        'flex flex-col lg:flex-row items-center w-full justify-start gap-8',
         className,
       )}
     >
@@ -222,14 +222,15 @@ const HeroComponent = ({
           </div>
         </div>
       )}
-    </section>
+    </div>
   );
 };
 
-const Hero = () => {
+const Hero = ({ className }: { className?: string } = {}) => {
   return (
-    <div className="max-w-7xl mx-auto">
+    <div className="container mx-auto mb-12">
       <HeroComponent
+        className={className}
         title="Build your idea"
         subtitle="in days,"
         highlight="not months"

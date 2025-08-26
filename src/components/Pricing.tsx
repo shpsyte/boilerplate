@@ -112,13 +112,13 @@ const PricingCard = ({ tier }: { tier: PricingTier }) => {
 
 export const Pricing = ({ className }: PricingProps) => {
   return (
-    <section className={cn('w-full bg-base-100 py-12 md:py-24', className)}>
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="mx-auto max-w-2xl text-center mb-16">
+    <div className="container mx-auto">
+      <div className={cn('space-y-16', className)}>
+        <div className="text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
             Simple, transparent pricing
           </h2>
-          <p className="text-lg text-base-content/80">
+          <p className="text-lg text-base-content/80 max-w-2xl mx-auto">
             Choose the plan that fits your needs. All plans include updates and
             core features.
           </p>
@@ -130,6 +130,6 @@ export const Pricing = ({ className }: PricingProps) => {
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 };

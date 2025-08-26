@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
+import { Typography } from '@/components/ui';
 
 interface TestimonialProps {
   quote: string;
@@ -9,7 +10,8 @@ interface TestimonialProps {
   className?: string;
 }
 
-export default function Testimonial({
+// Pure component - reusable core functionality
+function TestimonialCore({
   quote,
   authorName,
   authorRole,
@@ -23,9 +25,12 @@ export default function Testimonial({
         className,
       )}
     >
-      <blockquote className="text-center text-foreground leading-7 md:leading-10 lg:leading-[64px] font-medium text-lg md:text-3xl lg:text-6xl max-w-4xl">
+      <Typography
+        as="span"
+        className="text-center text-base-content leading-7 md:leading-10 lg:leading-[64px] font-medium text-lg md:text-3xl lg:text-6xl max-w-4xl"
+      >
         {quote}
-      </blockquote>
+      </Typography>
 
       <div className="flex items-center gap-5">
         {authorImage && (
@@ -34,18 +39,41 @@ export default function Testimonial({
             alt={`${authorName} avatar`}
             width={48}
             height={48}
-            className="w-12 h-12 rounded-full border border-black/8"
+            className="w-12 h-12 rounded-full border border-base-300"
           />
         )}
         <div className="flex flex-col items-start">
-          <div className="text-foreground text-base font-medium leading-6">
+          <Typography
+            as="div"
+            className="text-base-content text-base font-medium leading-6"
+          >
             {authorName}
-          </div>
-          <div className="text-muted-foreground text-sm font-normal leading-6">
+          </Typography>
+          <Typography
+            as="div"
+            className="text-base-content/70 text-sm font-normal leading-6"
+          >
             {authorRole}
-          </div>
+          </Typography>
         </div>
       </div>
     </div>
   );
 }
+
+// Wrapper with default layout - ready to use
+const Testimonial = () => {
+  return (
+    <div className="container mx-auto py-12">
+      <TestimonialCore
+        quote="This product changed everything for our team."
+        authorName="Jane Doe"
+        authorRole="CTO, TechCorp"
+      />
+    </div>
+  );
+};
+
+// Export both for flexibility
+export { TestimonialCore, Testimonial };
+export default Testimonial;

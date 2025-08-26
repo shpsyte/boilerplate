@@ -14,7 +14,7 @@ type CTAProps = {
   className?: string;
 };
 
-export function CTA({
+function CtaComponent({
   title,
   description,
   primaryButton,
@@ -50,3 +50,24 @@ export function CTA({
     </div>
   );
 }
+
+const Cta = () => {
+  return (
+    <div className="container mx-auto mb-12">
+      <CtaComponent
+        title="Ready to Get Started?"
+        description="Join thousands of developers who trust our boilerplate to build amazing applications faster than ever."
+        primaryButton={{
+          text: 'Start Building Now',
+          onClick: () => console.log('Start building clicked'),
+        }}
+        secondaryButton={{
+          text: 'View Documentation',
+          onClick: () => console.log('View docs clicked'),
+        }}
+      />
+    </div>
+  );
+};
+
+export { CtaComponent, Cta };
