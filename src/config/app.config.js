@@ -228,9 +228,9 @@ export const appConfig = {
       },
     },
     social: {
-      github: { href: '#', enabled: true },
-      twitter: { href: '#', enabled: false },
-      linkedin: { href: '#', enabled: false },
+      github: { href: '#', enabled: true, label: 'GitHub', icon: '🐙' },
+      twitter: { href: '#', enabled: false, label: 'Twitter', icon: '🐦' },
+      linkedin: { href: '#', enabled: false, label: 'LinkedIn', icon: '🔗' },
     },
     legal: {
       privacy: { label: 'Privacy Policy', href: '#', enabled: false },

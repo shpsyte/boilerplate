@@ -1,6 +1,6 @@
 'use client';
 import { appConfig } from '@/config/app.config';
-import { Github, Twitter, Linkedin, Mail } from 'lucide-react';
+import { Github, Twitter, Linkedin } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -38,13 +38,34 @@ export function Footer() {
               {appConfig.metadata.description}
             </p>
             <div className="flex gap-3">
-              <Link
-                href="#"
-                className="btn btn-ghost btn-sm btn-circle hover:bg-primary hover:text-primary-content transition-colors"
-                aria-label="GitHub"
-              >
-                <Github size={18} />
-              </Link>
+              {appConfig.footer.social.github.enabled && (
+                <Link
+                  href={appConfig.footer.social.github.href}
+                  className="btn btn-ghost btn-sm btn-circle hover:bg-primary hover:text-primary-content transition-colors"
+                  aria-label={appConfig.footer.social.github.label}
+                >
+                  <Github size={18} />
+                </Link>
+              )}
+
+              {appConfig.footer.social.twitter.enabled && (
+                <Link
+                  href={appConfig.footer.social.twitter.href}
+                  className="btn btn-ghost btn-sm btn-circle hover:bg-primary hover:text-primary-content transition-colors"
+                  aria-label={appConfig.footer.social.twitter.label}
+                >
+                  <Twitter size={18} />
+                </Link>
+              )}
+              {appConfig.footer.social.linkedin.enabled && (
+                <Link
+                  href={appConfig.footer.social.linkedin.href}
+                  className="btn btn-ghost btn-sm btn-circle hover:bg-primary hover:text-primary-content transition-colors"
+                  aria-label={appConfig.footer.social.linkedin.label}
+                >
+                  <Linkedin size={18} />
+                </Link>
+              )}
             </div>
           </div>
 

@@ -100,7 +100,7 @@ const HeroComponent = ({
             )}
             {highlight && (
               <span className="relative whitespace-nowrap">
-                <span className="absolute bg-neutral-content -left-2 -top-1 -bottom-1 -right-2 md:-left-3 md:-top-0 md:-bottom-0 md:-right-3 -rotate-3"></span>
+                <span className="absolute bg-neutral-content -left-2 -top-1 -bottom-1 -right-2 md:-left-3 md:-top-0 md:-bottom-0 md:-right-3 -rotate-1 rounded-tl-2xl rounded-br-2xl"></span>
                 <span className="relative text-neutral">{highlight}</span>
               </span>
             )}
