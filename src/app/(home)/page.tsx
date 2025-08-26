@@ -1,11 +1,12 @@
 'use client';
 import { Header } from '@/components/Header';
 import { Hero } from '@/components/Hero';
-import { Features } from '@/components/Features';
+import { Features, Integrations } from '@/components/Features';
 import { Pricing } from '@/components/Pricing';
 import { Cta } from '@/components/CTA';
+import { Footer } from '@/components/Footer';
 import { Suspense } from 'react';
-import { Testimonial } from '@/components/Testimonial';
+import { FAQ } from '@/components/FAQ';
 
 export default function Home() {
   return (
@@ -13,19 +14,15 @@ export default function Home() {
       <Suspense>
         <Header />
       </Suspense>
-      <main className="min-h-screen w-full">
+      <main className="w-full">
         <Hero />
+        <Integrations />
         <Features />
         <Pricing />
-        <Cta />
-        <Testimonial />
-        {/* <Testimonial
-          quote="This product changed everything for our team."
-          authorName="Jane Doe"
-          authorRole="CTO, TechCorp"
-        /> */}
+        <Cta className="py-8" />
+        <FAQ />
       </main>
-      {/* <Footer /> */}
+      <Footer />
       {/* <Container className="mt-2">
         <Suspense>
           <Navbar />

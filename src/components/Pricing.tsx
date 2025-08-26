@@ -18,29 +18,30 @@ type PricingProps = {
 
 const tiers: PricingTier[] = [
   {
-    name: 'Hobby',
+    name: 'Doit by yourSelf',
     price: 'Free',
-    description: 'Perfect for side projects and experiments',
+    description: 'Always free',
     features: [
-      'Next.js 14 setup',
-      'Basic AI integration',
-      'TypeScript configured',
+      'Ready to go',
+      'CLaude AI integration',
       'Responsive layouts',
+      'Authentication',
+      'Stripe payments',
       'Community support',
     ],
-    cta: 'Get Started',
+    cta: 'Download here',
     highlight: false,
   },
   {
     name: 'Pro',
-    price: '$29',
-    description: 'Everything you need for a production app',
+    price: '$49',
+    description: 'We do it for your',
     features: [
-      'All Hobby features',
-      'Advanced AI capabilities',
-      'Authentication included',
-      'Database integrations',
-      'API route examples',
+      'All free features',
+      'We deploy it for you',
+      'We manage it for you',
+      'We customize layout it for you',
+      'We handle all updates',
       'Priority support',
     ],
     cta: 'Buy Pro',
@@ -54,8 +55,8 @@ const tiers: PricingTier[] = [
       'All Pro features',
       'Custom AI model integration',
       'Dedicated support',
-      'Performance optimization',
-      'Security audits',
+      'Backend & Frontend split',
+      'Custom infrastructure',
       'Training & onboarding',
     ],
     cta: 'Contact Us',
@@ -112,8 +113,8 @@ const PricingCard = ({ tier }: { tier: PricingTier }) => {
 
 export const Pricing = ({ className }: PricingProps) => {
   return (
-    <div className="container mx-auto">
-      <div className={cn('space-y-16', className)}>
+    <div className={cn('container mx-auto py-24', className)} id="pricing">
+      <div className="space-y-16">
         <div className="text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
             Simple, transparent pricing

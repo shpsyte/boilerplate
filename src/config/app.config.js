@@ -112,6 +112,41 @@ export const appConfig = {
     return this.getAllThemes().map((theme) => theme.name);
   },
 
+  // FAQ configuration
+  faq: {
+    title: 'FAQ',
+    subtitle:
+      'Everything you need to know about Build!Fast and how it can transform your development workflow',
+    items: [
+      {
+        question: 'What is Build!Fast?',
+        answer:
+          'Build!Fast is a modern Next.js 15 boilerplate designed as a SaaS template with AI-powered features, DaisyUI + Tailwind CSS 4, and TypeScript. It helps developers ship products faster by providing a solid foundation.',
+      },
+      {
+        question: 'What technologies are included?',
+        answer:
+          'Next.js 15 with App Router, TypeScript, DaisyUI + Tailwind CSS 4, 32 pre-configured themes, component library, and a centralized configuration system for easy customization.',
+      },
+      {
+        question: 'Is it suitable for production?',
+        answer:
+          'Yes! Build!Fast is production-ready with optimized performance, proper TypeScript configuration, ESLint with Prettier, and follows Next.js best practices.',
+      },
+
+      {
+        question: 'Can I add my own components?',
+        answer:
+          'Absolutely! The boilerplate includes a component library structure in src/components/ui/ and follows clear conventions for adding new components.',
+      },
+      {
+        question: 'Is there ongoing support?',
+        answer:
+          'Yes, we provide documentation, examples, and community support. The boilerplate is actively maintained and updated with new features.',
+      },
+    ],
+  },
+
   // Navbar configuration for dynamic rendering
   navbar: {
     // Brand/Logo configuration
@@ -132,9 +167,8 @@ export const appConfig = {
       items: [
         { label: 'Features', href: '#features', enabled: true },
         { label: 'Pricing', href: '#pricing', enabled: true },
-        { label: 'About', href: '#about', enabled: true },
         { label: 'Contact', href: '#contact', enabled: true },
-        { label: 'FAQ', href: '#faq', enabled: false }, // example disabled item
+        { label: 'FAQ', href: '#faq', enabled: true }, // example disabled item
       ],
     },
 

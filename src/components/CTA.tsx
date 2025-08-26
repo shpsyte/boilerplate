@@ -51,15 +51,19 @@ function CtaComponent({
   );
 }
 
-const Cta = () => {
+const Cta = ({ className }: { className?: string }) => {
   return (
-    <div className="container mx-auto mb-12">
+    <div className={cn('container mx-auto py-24', className)}>
       <CtaComponent
         title="Ready to Get Started?"
         description="Join thousands of developers who trust our boilerplate to build amazing applications faster than ever."
         primaryButton={{
           text: 'Start Building Now',
-          onClick: () => console.log('Start building clicked'),
+          onClick: () =>
+            window.open(
+              'https://vercel.com/new/clone?repository-url=https://github.com/shpsyte/my-saas-template&project-name=saas-template&repository-name=saas-template&demo-title=Next.js+SaaS+Template&demo-description=The+first+boilerplate+with+AI+power&demo-url=https://my-saas-template.vercel.app&demo-image=https://raw.githubusercontent.com/shpsyte/my-saas-template/main/preview.png',
+              '_blank',
+            ),
         }}
         secondaryButton={{
           text: 'View Documentation',

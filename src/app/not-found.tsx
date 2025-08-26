@@ -1,6 +1,6 @@
 'use client';
 
-import { LinkButton, Typography } from '@/components/ui';
+import { LinkButton } from '@/components/ui';
 import { useState, useEffect } from 'react';
 
 const funnyPhrases = [
@@ -99,26 +99,13 @@ export default function NotFound() {
 
         {/* Random funny phrase */}
         <div className="space-y-4">
-          <Typography
-            as="h1"
-            size="4xl"
-            weight="bold"
-            color="primary"
-            align="center"
-          >
+          <h1 className="text-4xl font-bold text-primary text-center">
             Page Not Found
-          </Typography>
+          </h1>
 
-          <Typography
-            as="p"
-            size="lg"
-            weight="normal"
-            color="base-content"
-            align="center"
-            className="italic min-h-[3rem] flex items-center justify-center"
-          >
+          <p className="text-lg font-normal text-base-content text-center italic min-h-[3rem] flex items-center justify-center">
             {randomPhrase}
-          </Typography>
+          </p>
         </div>
 
         {/* Back to Home button */}

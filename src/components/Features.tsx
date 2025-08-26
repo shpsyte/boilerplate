@@ -1,7 +1,17 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { Zap, Code, Puzzle, Shield, Rocket, RefreshCw } from 'lucide-react';
+import {
+  Zap,
+  Code,
+  Puzzle,
+  Shield,
+  Rocket,
+  RefreshCw,
+  Box,
+  Key,
+  CreditCard,
+} from 'lucide-react';
 
 type FeatureProps = {
   icon: React.ReactNode;
@@ -28,9 +38,9 @@ const featuresList: FeatureProps[] = [
   },
   {
     icon: <Puzzle size={24} />,
-    title: 'AI Integration',
+    title: 'Fully open-source',
     description:
-      'Built-in AI capabilities ready to power your next innovative feature.',
+      'Our code is open for everyone to use, modify, and distribute.',
   },
   {
     icon: <Shield size={24} />,
@@ -50,6 +60,27 @@ const featuresList: FeatureProps[] = [
   },
 ];
 
+const integrations = [
+  {
+    icon: <Box size={24} />,
+    title: 'Tailwind CSS/DaisyUI',
+    description:
+      'Build beautiful, modern interfaces in minutes — no CSS hassle, just pure speed to launch.',
+  },
+  {
+    icon: <Key size={24} />,
+    title: 'Authentication',
+    description:
+      'Secure login out of the box. Social logins, user management, and better auth baked in from day one.',
+  },
+  {
+    icon: <CreditCard size={24} />,
+    title: 'Payment Processing',
+    description:
+      'Stripe integration with subscription management, billing, and webhook handling configured.',
+  },
+];
+
 const FeatureCard = ({ icon, title, description }: FeatureProps) => {
   return (
     <div className="card bg-base-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 animate-fade-in-up">
@@ -64,28 +95,49 @@ const FeatureCard = ({ icon, title, description }: FeatureProps) => {
   );
 };
 
+export const Integrations = ({ className }: FeaturesProps) => {
+  return (
+    <div
+      className={cn('w-full bg-base-200 py-24', className)}
+      id="#integrations"
+    >
+      <div className="container mx-auto ">
+        <div className="space-y-8">
+          <div className="text-center">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl ">
+              Everything you need, nothing you don&apos;t
+            </h2>
+            <p className="text-lg text-base-content/80 max-w-2xl mx-auto font-light">
+              A minimalist approach with maximum flexibility. Only the essential
+              features to get you started fast.
+            </p>
+          </div>
+
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {integrations.map((feature, index) => (
+              <FeatureCard key={index} {...feature} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export const Features = ({ className }: FeaturesProps) => {
   return (
-    <div className="container mx-auto mb-12">
-      <div className={cn('space-y-16', className)}>
+    <div className={cn('container mx-auto py-24', className)} id="features">
+      <div className="space-y-16">
         <div className="text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-            Everything you need, nothing you don&apos;t
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl ">
+            Crafted by engineers, for everyone
           </h2>
-          <p className="text-lg text-base-content/80 max-w-2xl mx-auto">
-            A minimalist approach with maximum flexibility. Only the essential
-            features to get you started fast.
-          </p>
+          <p className="text-lg text-base-content/80 max-w-2xl mx-auto font-light"></p>
         </div>
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {featuresList.map((feature, index) => (
-            <FeatureCard
-              key={index}
-              icon={feature.icon}
-              title={feature.title}
-              description={feature.description}
-            />
+            <FeatureCard key={index} {...feature} />
           ))}
         </div>
       </div>

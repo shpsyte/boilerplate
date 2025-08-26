@@ -93,21 +93,21 @@ const HeroComponent = ({
 
         <h1 className="font-extrabold text-4xl lg:text-6xl tracking-tight md:-mb-4 flex flex-col gap-3 items-start">
           <span className="relative">{title}</span>
-          {subtitle && (
-            <span className="whitespace-nowrap relative">
+          <span className="whitespace-nowrap relative">
+            {subtitle && (
               <span className="mr-3 sm:mr-4 md:mr-5">{subtitle}</span>
-              {highlight && (
-                <span className="relative whitespace-nowrap">
-                  <span className="absolute bg-neutral-content -left-2 -top-1 -bottom-1 -right-2 md:-left-3 md:-top-0 md:-bottom-0 md:-right-3 -rotate-1"></span>
-                  <span className="relative text-neutral">{highlight}</span>
-                </span>
-              )}
-            </span>
-          )}
+            )}
+            {highlight && (
+              <span className="relative whitespace-nowrap">
+                <span className="absolute bg-neutral-content -left-2 -top-1 -bottom-1 -right-2 md:-left-3 md:-top-0 md:-bottom-0 md:-right-3 -rotate-3"></span>
+                <span className="relative text-neutral">{highlight}</span>
+              </span>
+            )}
+          </span>
         </h1>
 
         {description && (
-          <p className="text-lg opacity-80 leading-relaxed max-w-xl">
+          <p className="text-lg opacity-80 leading-relaxed max-w-xl font-light mt-4">
             <span dangerouslySetInnerHTML={{ __html: description }} />
           </p>
         )}
@@ -228,12 +228,10 @@ const HeroComponent = ({
 
 const Hero = ({ className }: { className?: string } = {}) => {
   return (
-    <div className="container mx-auto mb-12">
+    <div className={cn('container mx-auto mb-12', className)}>
       <HeroComponent
-        className={className}
         title="Build your idea"
-        subtitle="in days,"
-        highlight="not months"
+        highlight="10x Faster"
         description="A minimalist, production-ready Next.js boilerplate with code-built-in AI capabilities. Skip the setup and anoying stufs and focus on what matters most! Building your product."
         ctaText="Get This Template"
         ctaSubtitle="AI-Powered Next.js Boilerplate"

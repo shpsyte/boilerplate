@@ -6,7 +6,7 @@ import { appConfig } from '@/config/app.config';
 import Image from 'next/image';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
-import { Typography, LinkButton } from '@/components/ui';
+import { LinkButton } from '@/components/ui';
 
 type HeaderProps = {
   className?: string;
@@ -62,7 +62,7 @@ export function Header({ className }: HeaderProps = {}) {
                       height={64}
                     />
                   ) : (
-                    <Typography as="span">{navbar.brand.text}</Typography>
+                    <span className="font-medium">{navbar.brand.text}</span>
                   )}
                 </Link>
               )}
@@ -95,9 +95,7 @@ export function Header({ className }: HeaderProps = {}) {
                             },
                           )}
                         >
-                          <Typography size="base" weight="light">
-                            {label}
-                          </Typography>
+                          <span className="text-base font-light">{label}</span>
                         </Link>
                       </li>
                     ))}

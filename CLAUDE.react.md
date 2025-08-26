@@ -11,7 +11,7 @@ This file provides React component development guidelines and UI standards for t
 Always import basic components from the UI library:
 
 ```tsx
-import { Typography, Button, Container, LinkButton } from '@/components/ui';
+import { Button, Container, LinkButton } from '@/components/ui';
 ```
 
 ### ✅ Correct DaisyUI Usage
@@ -31,12 +31,12 @@ import { Typography, Button, Container, LinkButton } from '@/components/ui';
 </section>
 
 // Typography
-<Typography as="h1" className="text-4xl font-bold text-base-content">
+<h1 className="text-4xl font-bold text-base-content">
   Main Heading
-</Typography>
-<Typography as="p" className="text-base-content/70">
+</h1>
+<p className="text-base-content/70">
   Description text with opacity
-</Typography>
+</p>
 
 // Cards & Components
 <div className="card bg-base-100 shadow-xl">
@@ -66,8 +66,8 @@ import { Typography, Button, Container, LinkButton } from '@/components/ui';
 // Don't use arbitrary colors
 <div className="bg-[#3b82f6] text-[#ffffff]">
 
-// Don't use raw typography elements without Typography component
-<h1 className="text-2xl font-bold">
+// Don't use arbitrary colors in typography
+<h1 className="text-[#000000]">
 ```
 
 ## Component Architecture
@@ -90,7 +90,7 @@ Here's the standard template following the dual export pattern:
 ```tsx
 import { cn } from '@/lib/utils';
 import { appConfig } from '@/config/app.config';
-import { Typography, Button } from '@/components/ui';
+import { Button } from '@/components/ui';
 
 type FeatureCardProps = {
   title: string;
@@ -133,15 +133,8 @@ function FeatureCardCore({
             </div>
           </div>
         )}
-        <Typography
-          as="h3"
-          className="card-title text-base-content justify-center"
-        >
-          {title}
-        </Typography>
-        <Typography as="p" className="text-base-content/70 text-center">
-          {description}
-        </Typography>
+        <h3 className="card-title text-base-content justify-center">{title}</h3>
+        <p className="text-base-content/70 text-center">{description}</p>
         {variant === 'featured' && (
           <div className="card-actions justify-center mt-4">
             <div className="badge badge-primary">Featured</div>
@@ -259,18 +252,12 @@ function MyComponentCore({
 }) {
   return (
     <div className={cn('text-center space-y-6', className)}>
-      <Typography
-        as="h2"
-        className="text-4xl md:text-6xl font-bold text-base-content"
-      >
+      <h2 className="text-4xl md:text-6xl font-bold text-base-content">
         {title}
-      </Typography>
-      <Typography
-        as="p"
-        className="text-lg md:text-xl text-base-content/70 max-w-2xl mx-auto"
-      >
+      </h2>
+      <p className="text-lg md:text-xl text-base-content/70 max-w-2xl mx-auto">
         {description}
-      </Typography>
+      </p>
     </div>
   );
 }
@@ -357,7 +344,7 @@ Always include responsive classes for mobile-first design:
 
 ```tsx
 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-<Typography as="h1" className="text-2xl md:text-4xl lg:text-6xl">
+<h1 className="text-2xl md:text-4xl lg:text-6xl">
 <section className="py-8 md:py-16">
 <div className="flex flex-col lg:flex-row items-center gap-8">
 ```

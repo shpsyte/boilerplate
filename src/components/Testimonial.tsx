@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
-import { Typography } from '@/components/ui';
 
 interface TestimonialProps {
   quote: string;
@@ -25,12 +24,9 @@ function TestimonialCore({
         className,
       )}
     >
-      <Typography
-        as="span"
-        className="text-center text-base-content leading-7 md:leading-10 lg:leading-[64px] font-medium text-lg md:text-3xl lg:text-6xl max-w-4xl"
-      >
+      <blockquote className="text-center text-base-content leading-7 md:leading-10 lg:leading-[64px] font-medium text-lg md:text-3xl lg:text-6xl max-w-4xl">
         {quote}
-      </Typography>
+      </blockquote>
 
       <div className="flex items-center gap-5">
         {authorImage && (
@@ -43,18 +39,12 @@ function TestimonialCore({
           />
         )}
         <div className="flex flex-col items-start">
-          <Typography
-            as="div"
-            className="text-base-content text-base font-medium leading-6"
-          >
+          <div className="text-base-content text-base font-medium leading-6">
             {authorName}
-          </Typography>
-          <Typography
-            as="div"
-            className="text-base-content/70 text-sm font-normal leading-6"
-          >
+          </div>
+          <div className="text-base-content/70 text-sm font-normal leading-6">
             {authorRole}
-          </Typography>
+          </div>
         </div>
       </div>
     </div>
