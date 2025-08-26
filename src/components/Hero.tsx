@@ -233,7 +233,7 @@ const Hero = ({ className }: { className?: string } = {}) => {
         title="Build your idea"
         highlight="10x Faster"
         description="A minimalist, production-ready Next.js boilerplate with code-built-in AI capabilities. Skip the setup and anoying stufs and focus on what matters most! Building your product."
-        ctaText="Get This Template"
+        ctaText="Start building!"
         ctaSubtitle="AI-Powered Next.js Boilerplate"
         ctaHref="https://github.com/shpsyte/boilerplate"
         badge={{
@@ -241,10 +241,10 @@ const Hero = ({ className }: { className?: string } = {}) => {
           text: '⭐ Star us on GitHub',
         }}
         image="/hero-img.avif"
-        imageAlt="Mongo + Mailgun + Stripe + NextJS + Tailwind + NextAuth = ShipFast"
+        imageAlt="Stripe + NextJS + Tailwind + BetterAuth = Build!Fast"
         imageBadge={{
           icon: <Sparkles size={20} className="text-white" />,
-          text: 'Code-Template for Claude AI',
+          text: 'Built by engineers, empowered by AI',
         }}
       />
     </div>

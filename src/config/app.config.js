@@ -15,11 +15,14 @@ export const appConfig = {
 
   // Application metadata
   metadata: {
+    canonicalUrl: 'https://buildfast.dev',
     title: 'Build!Fast',
     description:
       'A modern React boilerplate supercharged with AI-powered features, designed for rapid development, scalability, and seamless user experience.',
     version: '1.0.0',
     author: 'LuizB!',
+    ctaMainAction:
+      'https://vercel.com/new/clone?repository-url=https://github.com/shpsyte/boilerplate&project-name=nextjs-boilerplate&repository-name=nextjs-boilerplate&demo-title=Next.js+AI+Boilerplate&demo-description=A modern React boilerplate supercharged with AI-powered features, designed for rapid development, scalability, and seamless user experience.&demo-url=https://boilerplate.vercel.app&demo-image=https://raw.githubusercontent.com/shpsyte/boilerplate/main/preview.png',
   },
 
   // Theme configuration with DaisyUI themes
@@ -199,6 +202,39 @@ export const appConfig = {
     mobile: {
       enabled: true,
       showAuthInMobile: true, // show auth buttons in mobile menu
+    },
+  },
+
+  // Footer configuration
+  footer: {
+    enabled: true,
+    menu: {
+      product: {
+        title: 'Product',
+        enabled: true,
+        items: [
+          { label: 'Features', href: '#features', enabled: true },
+          { label: 'Pricing', href: '#pricing', enabled: true },
+          { label: 'Documentation', href: '#', enabled: true },
+        ],
+      },
+      resources: {
+        title: 'Resources',
+        enabled: true,
+        items: [
+          { label: 'Community', href: '#', enabled: true },
+          { label: 'Contact', href: '#contact', enabled: true },
+        ],
+      },
+    },
+    social: {
+      github: { href: '#', enabled: true },
+      twitter: { href: '#', enabled: false },
+      linkedin: { href: '#', enabled: false },
+    },
+    legal: {
+      privacy: { label: 'Privacy Policy', href: '#', enabled: false },
+      terms: { label: 'Terms of Service', href: '#', enabled: false },
     },
   },
 };

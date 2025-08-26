@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { ThemeSwitch } from './ThemeSwitch';
 import { appConfig } from '@/config/app.config';
 import Image from 'next/image';
-import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { LinkButton } from '@/components/ui';
 
@@ -53,7 +52,7 @@ export function Header({ className }: HeaderProps = {}) {
 
               {/* Brand/Logo */}
               {navbar.brand.enabled && (
-                <Link href={navbar.brand.href} className="">
+                <a href={navbar.brand.href} className="scroll-smooth">
                   {navbar.brand.logo ? (
                     <Image
                       src={navbar.brand.logo}
@@ -64,7 +63,7 @@ export function Header({ className }: HeaderProps = {}) {
                   ) : (
                     <span className="font-medium">{navbar.brand.text}</span>
                   )}
-                </Link>
+                </a>
               )}
             </div>
 
@@ -86,17 +85,17 @@ export function Header({ className }: HeaderProps = {}) {
                   >
                     {enabledMenuItems.map(({ enabled, href, label }) => (
                       <li key={href}>
-                        <Link
+                        <a
                           href={href}
                           className={cn(
-                            'text-gray-600 hover:text-primary transition-colors',
+                            'text-gray-600 hover:text-primary transition-colors scroll-smooth',
                             {
                               'disabled:': !enabled,
                             },
                           )}
                         >
                           <span className="text-base font-light">{label}</span>
-                        </Link>
+                        </a>
                       </li>
                     ))}
                   </ul>

@@ -4,7 +4,7 @@ import { Github, Twitter, Linkedin, Mail } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-const { navbar } = appConfig;
+const { navbar, footer } = appConfig;
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -48,85 +48,85 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Product links */}
-          <div>
-            <h3 className="font-semibold text-base-content text-lg mb-4">
-              Product
-            </h3>
-            <ul className="space-y-3">
-              <li>
-                <a
-                  href="#features"
-                  className="text-base-content/70 hover:text-primary transition-colors hover:underline"
-                >
-                  Features
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#pricing"
-                  className="text-base-content/70 hover:text-primary transition-colors hover:underline"
-                >
-                  Pricing
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-base-content/70 hover:text-primary transition-colors hover:underline"
-                >
-                  Documentation
-                </a>
-              </li>
-            </ul>
-          </div>
+          {/* Dynamic menu sections */}
+          {footer.menu.product.enabled && (
+            <div>
+              <h3 className="font-semibold text-base-content text-lg mb-4">
+                {footer.menu.product.title}
+              </h3>
+              <ul className="space-y-3">
+                {footer.menu.product.items
+                  .filter((item) => item.enabled)
+                  .map((item, index) => (
+                    <li key={index}>
+                      <a
+                        href={item.href}
+                        className="text-base-content/70 hover:text-primary transition-colors hover:underline"
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  ))}
+              </ul>
+            </div>
+          )}
 
-          {/* Resources links */}
-          <div>
-            <h3 className="font-semibold text-base-content text-lg mb-4">
-              Resources
-            </h3>
-            <ul className="space-y-3">
-              <li>
-                <a
-                  href="#"
-                  className="text-base-content/70 hover:text-primary transition-colors hover:underline"
-                >
-                  Community
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="#contact"
-                  className="text-base-content/70 hover:text-primary transition-colors hover:underline"
-                >
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
+          {footer.menu.resources.enabled && (
+            <div>
+              <h3 className="font-semibold text-base-content text-lg mb-4">
+                {footer.menu.resources.title}
+              </h3>
+              <ul className="space-y-3">
+                {footer.menu.resources.items
+                  .filter((item) => item.enabled)
+                  .map((item, index) => (
+                    <li key={index}>
+                      <a
+                        href={item.href}
+                        className="text-base-content/70 hover:text-primary transition-colors hover:underline"
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  ))}
+              </ul>
+            </div>
+          )}
         </div>
 
         {/* Bottom section */}
         <div className="divider my-8"></div>
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-base-content/60 text-sm">
-            © {currentYear} {appConfig.navbar.brand.text}. All rights reserved.
+            <span>
+              {currentYear} built with ♥
+              <a
+                target="_blank"
+                className="text-primary"
+                href={appConfig.metadata.canonicalUrl}
+              >
+                {appConfig.navbar.brand.text}
+              </a>{' '}
+              All rights reserved.
+            </span>
           </p>
           <div className="flex gap-6 text-sm">
-            <a
-              href="#"
-              className="text-base-content/60 hover:text-primary transition-colors hover:underline"
-            >
-              Privacy Policy
-            </a>
-            <a
-              href="#"
-              className="text-base-content/60 hover:text-primary transition-colors hover:underline"
-            >
-              Terms of Service
-            </a>
+            {footer.legal.privacy.enabled && (
+              <a
+                href={footer.legal.privacy.href}
+                className="text-base-content/60 hover:text-primary transition-colors hover:underline"
+              >
+                {footer.legal.privacy.label}
+              </a>
+            )}
+            {footer.legal.terms.enabled && (
+              <a
+                href={footer.legal.terms.href}
+                className="text-base-content/60 hover:text-primary transition-colors hover:underline"
+              >
+                {footer.legal.terms.label}
+              </a>
+            )}
           </div>
         </div>
       </div>
